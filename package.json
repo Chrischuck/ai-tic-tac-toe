@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd ./client && npm run build && cd ../ && cp ./server/go/main.wasm ./client/dist"
+    "build": "cd ./client && npm install && npm run build && cd ../ && cp ./server/go/main.wasm ./client/dist"
   },
   "repository": {
     "type": "git",
