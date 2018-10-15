@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const DotenvPlugin = require('webpack-dotenv-plugin');
 
 module.exports = {
   resolve: {
@@ -32,6 +33,10 @@ module.exports = {
     disableHostCheck: true
   },
   plugins: [
+    new DotenvPlugin({
+      sample: './.env.example',
+      path: './.env'
+    }),
     new HtmlWebpackPlugin({
       title: 'GoWasm!',
       template: './src/index.html',

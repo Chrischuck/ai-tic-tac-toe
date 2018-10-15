@@ -2,6 +2,8 @@ import React from 'react'
 
 import Grid from './grid'
 
+const isDevMode = process.env.NODE_ENV !== 'production'
+
 export default class App extends React.Component {
   constructor(props) {
     super(props)
@@ -12,7 +14,8 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-		WebAssembly.instantiateStreaming(fetch("http://localhost:3000"), go.importObject).then(async (result) => {
+    const { PROD_SERVER_URI, DEV_SERVER_URI } = process.env
+		WebAssembly.instantiateStreaming(fetch(isDevMode ? DEV_SERVER_URI : PROD_SERVER_URI), go.importObject).then(async (result) => {
       go.run(result.instance)
       this.setState({ isLoading: false })
     });
