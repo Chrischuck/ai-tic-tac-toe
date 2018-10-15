@@ -1,0 +1,19 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd ./client && npm run build && cd ../ && cp ./server/go/main.wasm ./client/dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chrischuck/ai-tic-tac-toe.git"
+  },
+  "author": "Chris Chuck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chrischuck/ai-tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/Chrischuck/ai-tic-tac-toe#readme"
+}
