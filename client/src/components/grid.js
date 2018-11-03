@@ -108,19 +108,18 @@ export default class Grid extends React.Component {
     })
   }
 
-  resetGame = (turn, gridSize) => {
-    const newGridSize = gridSize || this.state.gridSize || DEFAULT_GRID_SIZE
+  resetGame = (turn) => {
     
-    this.setState({
-      message: '',
+    this.setState((prevState, _) => ({
+      message: 'Restarting Game..',
       isGameOver: false,
-      startTurn: turn,
-      turn: turn || this.state.startTurn || DEFAULT_TURN, 
-      gridSize: gridSize || this.state.gridSize || DEFAULT_GRID_SIZE,
+      startTurn: turn || prevState.startTurn,
+      turn: turn || prevState.startTurn || DEFAULT_TURN, 
+      gridSize: DEFAULT_GRID_SIZE,
       lastMove: null,
       turnCount: 1,
-      grid: initGrid(newGridSize)
-    })
+      grid: initGrid()
+    }), () => this.setState({ message: ''}))
   }
 
 
@@ -133,17 +132,11 @@ export default class Grid extends React.Component {
         <h1 style={{textAlign: 'center', marginBottom: '5px'}}>Chris's Tic Tac Toe</h1>
         <h2 style={{textAlign: 'center', marginTop: '5px'}}>{message ? message : (!isGameOver && turn === 'COMPUTER') ? 'Compooter is thinking 🤔' : ' '}</h2>
         <div style={{ display: 'flex', marginBottom: '10px' }}>
-          <select onChange={(e) => this.resetGame(null, e.target.value)} style={{ flex: 1, marginRight: '3px'}}>
-            <option value={3}>Size 3</option>
-            <option value={4}>Size 4</option>
-            <option value={5}>Size 5</option>
-            <option value={6}>Size 6</option>
-          </select>
-          <select onChange={(e) => this.resetGame(e.target.value, null)} style={{ flex: 1, marginRight: '3px'}}>
+          <select onChange={(e) => this.resetGame(e.target.value)} style={{ flex: 1, marginRight: '3px'}}>
             <option value='HOOMAN'>Hooman</option>
             <option value='COMPUTER'>Compooter</option>
           </select>
-          <button style={{ flex: 1}} onClick={() => this.resetGame()}>Reset</button>
+          <button style={{ flex: 1}} onClick={(e) => this.resetGame()}>Reset</button>
         </div>
         <div style={{marginLeft: 'auto', marginRight: 'auto'}}>
           {
