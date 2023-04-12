@@ -2,8 +2,8 @@ import React from "react";
 
 import Cell from "./cell";
 
-const DEFAULT_GRID_SIZE = 3
-const DEFAULT_TURN = 'HUMAN' 
+const DEFAULT_GRID_SIZE = 3;
+const DEFAULT_TURN = "HOOMAN";
 
 const initGrid = (size) => {
   const grid = [];
@@ -70,7 +70,7 @@ export default class Grid extends React.Component {
 
     gridCopy[row][column] = player;
 
-    const turn = player === "HUMAN" ? "COMPUTER" : "HUMAN";
+    const turn = player === "HOOMAN" ? "COMPUTER" : "HOOMAN";
 
     await new Promise((resolve, reject) => {
       checkGameState(grid, cell, turnCount, player);
@@ -80,8 +80,8 @@ export default class Grid extends React.Component {
 
     switch (gameState) {
       case 1:
-        this.endGame('Computer has won. Press reset to play again!', gridCopy)
-        return
+        this.endGame("Computer has won. Press reset to play again!", gridCopy);
+        return;
       case 2:
         this.endGame(
           "Congrats Hackerman. Press reset to play again!",
@@ -129,13 +129,30 @@ export default class Grid extends React.Component {
     const { grid, gridSize, turn, isGameOver, message } = this.state;
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-        <h1 style={{textAlign: 'center', marginBottom: '5px'}}>Chris's Tic Tac Toe</h1>
-        <h2 style={{textAlign: 'center', marginTop: '5px'}}>{message ? message : (!isGameOver && turn === 'COMPUTER') ? 'Computer is thinking 🤔' : ' '}</h2>
-        <div style={{ display: 'flex', marginBottom: '10px' }}>
-          <select onChange={(e) => this.resetGame(e.target.value)} style={{ flex: 1, marginRight: '3px'}}>
-            <option value='HUMAN'>Human</option>
-            <option value='COMPUTER'>Computer</option>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <h1 style={{ textAlign: "center", marginBottom: "5px" }}>
+          Chris's Tic Tac Toe
+        </h1>
+        <h2 style={{ textAlign: "center", marginTop: "5px" }}>
+          {message
+            ? message
+            : !isGameOver && turn === "COMPUTER"
+            ? "Computer is thinking 🤔"
+            : " "}
+        </h2>
+        <div style={{ display: "flex", marginBottom: "10px" }}>
+          <select
+            onChange={(e) => this.resetGame(e.target.value)}
+            style={{ flex: 1, marginRight: "3px" }}
+          >
+            <option value="HOOMAN">Human</option>
+            <option value="COMPUTER">Computer</option>
           </select>
           <button style={{ flex: 1 }} onClick={(e) => this.resetGame()}>
             Reset
