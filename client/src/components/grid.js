@@ -3,7 +3,7 @@ import React from "react";
 import Cell from "./cell";
 
 const DEFAULT_GRID_SIZE = 3;
-const DEFAULT_TURN = "HOOMAN";
+const DEFAULT_TURN = "HUMAN";
 
 const initGrid = (size) => {
   const grid = [];
@@ -70,7 +70,7 @@ export default class Grid extends React.Component {
 
     gridCopy[row][column] = player;
 
-    const turn = player === "HOOMAN" ? "COMPUTER" : "HOOMAN";
+    const turn = player === "HUMAN" ? "COMPUTER" : "HUMAN";
 
     await new Promise((resolve, reject) => {
       checkGameState(grid, cell, turnCount, player);
@@ -151,7 +151,7 @@ export default class Grid extends React.Component {
             onChange={(e) => this.resetGame(e.target.value)}
             style={{ flex: 1, marginRight: "3px" }}
           >
-            <option value="HOOMAN">Hooman</option>
+            <option value="HUMAN">Human</option>
             <option value="COMPUTER">Computer</option>
           </select>
           <button style={{ flex: 1 }} onClick={(e) => this.resetGame()}>

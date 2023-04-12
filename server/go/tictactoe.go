@@ -38,7 +38,7 @@ func miniMax(grid js.Value, lastMove []int8, player string, turnCount int, alpha
 	}
 
 	if player == "COMPUTER" {
-		return miniMaxMin(grid, "HOOMAN", turnCount, alpha, beta)
+		return miniMaxMin(grid, "HUMAN", turnCount, alpha, beta)
 	} else {
 		return miniMaxMax(grid, "COMPUTER", turnCount, alpha, beta)
 	}
@@ -139,7 +139,7 @@ func duplicateGrid(grid js.Value) []interface{} {
 }
 
 func StateValue(grid js.Value, lastMove []int8, player string, turnCount int) int {
-	// return 0 for more moves to be played, 1 for Computer win, 2 for hooman win, and 3 for tie!
+	// return 0 for more moves to be played, 1 for Computer win, 2 for HUMAN win, and 3 for tie!
 	rowIndex := lastMove[0]
 	columnIndex := lastMove[1]
 	gridSize := grid.Length()
