@@ -7,7 +7,7 @@ export default class Cell extends React.Component {
       return null;
     }
 
-    if (fill === "HUMAN") {
+    if (fill === 'HUMAN') {
       return (
         // Thanks w3schools! https://www.w3schools.com/graphics/svg_line.asp
         <svg height="50" width="50">
@@ -45,12 +45,12 @@ export default class Cell extends React.Component {
   }
 
   clickCell = () => {
-    const { cell, fillCell, fill, turn, isGameOver } = this.props;
-    if (fill || turn !== "HUMAN" || isGameOver) {
-      return;
+    const { cell, fillCell, fill, turn, isGameOver } = this.props
+    if (fill || turn !== 'HUMAN' || isGameOver) {
+      return
     }
-    fillCell(cell, "HUMAN");
-  };
+    fillCell(cell, 'HUMAN')
+  }
 
   render() {
     const { cell, gridSize, fill, isGameOver } = this.props;
