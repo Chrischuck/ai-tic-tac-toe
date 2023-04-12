@@ -68,7 +68,7 @@ export default class Grid extends React.Component {
 
     const gridCopy = [...grid]; // we do this so we don't mutate state itself!
 
-    const turn = player === 'HUMAN' ? 'COMPUTER' : 'HUMAN'
+    gridCopy[row][column] = player;
 
     const turn = player === "HUMAN" ? "COMPUTER" : "HUMAN";
 
